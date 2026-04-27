@@ -1,9 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_USER = ertanvi
-    }
+        environment {
+            DOCKER_USER = "ertanvi"
+        }
 
     stages {
 
