@@ -33,6 +33,19 @@ pipeline {
             }
         }
 
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t yourdockerhubusername/my-app:latest .'
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                sh 'docker login -u yourusername -p yourpassword'
+                sh 'docker push yourdockerhubusername/my-app:latest'
+            }
+        }
+
         stage('Push Images') {
             steps {
                 sh 'docker push $DOCKER_USER/backend'
