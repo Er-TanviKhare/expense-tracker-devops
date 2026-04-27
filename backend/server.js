@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 app.post("/add", (req, res) => {
   const expense = req.body;
   expenses.push(expense);
-  res.send({ message: "Expense added" });
+  res.send("Backend is running v2");
 });
 
 app.get("/all", (req, res) => {
