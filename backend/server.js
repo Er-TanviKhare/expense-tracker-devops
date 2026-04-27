@@ -7,6 +7,10 @@ app.use(express.json());
 
 let expenses = [];
 
+app.get('/', (req, res) => {
+    res.send('Backend is running 🚀');
+});
+
 app.get('/expenses', (req, res) => {
     res.json(expenses);
 });
