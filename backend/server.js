@@ -1,28 +1,22 @@
-const express = require("express");
-const cors = require("cors");
-
+const express = require('express');
 const app = express();
-const PORT = 5000;
+const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
 
 let expenses = [];
 
-app.get("/", (req, res) => {
-  res.send("Backend is running");
+app.get('/expenses', (req, res) => {
+    res.json(expenses);
 });
 
-app.post("/add", (req, res) => {
-  const expense = req.body;
-  expenses.push(expense);
-  res.send("Backend is running v2");
+app.post('/expenses', (req, res) => {
+    const expense = req.body;
+    expenses.push(expense);
+    res.json({ message: "Expense added" });
 });
 
-app.get("/all", (req, res) => {
-  res.json(expenses);
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(5000, () => {
+    console.log("Backend running on port 5000");
 });
