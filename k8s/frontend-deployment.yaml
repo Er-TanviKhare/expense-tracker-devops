@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -13,7 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: frontend
-          image: ertanvi/frontend:latest
-          ports:
-            - containerPort: 3000
+      - name: frontend
+        image: ertanvi/frontend
+        ports:
+        - containerPort: 80
