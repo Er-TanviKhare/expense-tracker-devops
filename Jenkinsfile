@@ -28,7 +28,8 @@ pipeline {
         stage('Docker Login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-            sh 'echo $PASS | docker login -u $USER --password-stdin'
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                }
             }
         }
 
@@ -39,7 +40,7 @@ pipeline {
             }
         }
 
-        stage('Deploy (Test Run)') {
+        stage('Deploy Containers') {
             steps {
                 sh 'docker run -d -p 5000:5000 $DOCKER_USER/backend'
                 sh 'docker run -d -p 3000:80 $DOCKER_USER/frontend'
